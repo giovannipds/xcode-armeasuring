@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         guard let currentFrame = sceneView.session.currentFrame else {return}
         let camera = currentFrame.camera
         let transform = camera.transform
+        print(transform)
         let sphere = SCNNode(geometry: SCNSphere(radius: 0.005))
         sphere.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
         sphere.simdTransform = transform
