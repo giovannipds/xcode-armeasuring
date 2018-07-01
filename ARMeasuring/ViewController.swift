@@ -30,10 +30,12 @@ class ViewController: UIViewController {
         guard let currentFrame = sceneView.session.currentFrame else {return}
         let camera = currentFrame.camera
         let transform = camera.transform
-        print(transform)
+        var translationMatrix = matrix_identity_float4x4
+        translationMatrix.columns.3.z = -0.1
+        var modifiedMatrix = simd_mul(transform, translationMatrix)
         let sphere = SCNNode(geometry: SCNSphere(radius: 0.005))
         sphere.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
-        sphere.simdTransform = transform
+        sphere.simdTransform = modifiedMatrix
         self.sceneView.scene.rootNode.addChildNode(sphere)
     }
 
