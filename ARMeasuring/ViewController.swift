@@ -63,7 +63,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             self.xLabel.text = String(format: "%.2f", xDistance) + "m"
             self.yLabel.text = String(format: "%.2f", yDistance) + "m"
             self.zLabel.text = String(format: "%.2f", zDistance) + "m"
+            self.distance.text = String(format: "%.2f", self.distanceTravelled(x: xDistance, y: yDistance, z: zDistance)) + "m"
         }
+    }
+    
+    func distanceTravelled(x: Float, y: Float, z: Float) -> Float {
+        
+        return (sqrtf(x*x + y*y + z*z))
     }
 
 }
