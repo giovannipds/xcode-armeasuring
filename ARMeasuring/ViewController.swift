@@ -30,6 +30,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @objc func handleTap(sender: UITapGestureRecognizer) {
         guard let sceneView = sender.view as? ARSCNView else {return}
         guard let currentFrame = sceneView.session.currentFrame else {return}
+        if self.startingPosition != nil {
+            self.startingPosition?.removeFromParentNode()
+            self.startingPosition = nil
+            return
+        }
         let camera = currentFrame.camera
         let transform = camera.transform
         var translationMatrix = matrix_identity_float4x4
