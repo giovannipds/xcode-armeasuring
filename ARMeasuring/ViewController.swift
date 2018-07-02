@@ -55,9 +55,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let yDistance = location.y - startingPosition.position.y
         let zDistance = location.z - startingPosition.position.z
         DispatchQueue.main.async {
-            self.xLabel.text = "\(xDistance)"
-            self.yLabel.text = "\(yDistance)"
-            self.zLabel.text = "\(zDistance)"
+            self.xLabel.text = String(format: "%.2f", xDistance) + "m"
+            self.yLabel.text = String(format: "%.2f", yDistance) + "m"
+            self.zLabel.text = String(format: "%.2f", zDistance) + "m"
         }
     }
 
